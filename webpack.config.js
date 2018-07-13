@@ -23,8 +23,14 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
+			template: './public/index.html',
 			title: 'Surveylet',
-			template: './public/index.html'
 		})
-	]
+	],
+	devServer: {
+		port: 3000,
+		proxy: {
+		  "/api": "http://localhost:8080"
+		}
+	}
 };

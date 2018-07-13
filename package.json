@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --mode development ./src/client/index.js --open",
-    "prod": "webpack --mode production ./src/client/index.js"
+    "prod": "webpack --mode production ./src/client/index.js",
+    "server": "cd src/server && node index.js"
   },
   "dependencies": {
     "express": "^4.16.3",
