@@ -1,3 +1,5 @@
+import './styles/main.css';
+
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 

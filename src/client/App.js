@@ -15,7 +15,7 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="App">
 				<h1>hi {this.state.data}</h1>
 			</div>
 		);

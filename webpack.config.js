@@ -1,4 +1,8 @@
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
 	module: {
@@ -18,13 +22,26 @@ module.exports = {
 						}
 					}
 				]
+			},
+			{
+				test: /\.css$/,
+				use: [
+					devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+					'css-loader'
+				]
 			}
 		]
 	},
 	plugins: [
+		new CleanWebpackPlugin([
+			'dist'
+		]),
 		new HtmlWebpackPlugin({
-			template: './public/index.html',
-			title: 'Surveylet',
+			title: 'Surveylet'
+		}),
+		new MiniCssExtractPlugin({
+			filename: devMode ? '[name].css' : '[name].[hash].css',
+			chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
 		})
 	],
 	devServer: {
