@@ -1,0 +1,18 @@
+{
+  "name": "surveylet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yebra06/surveylet.git",
+  "author": "<fred.yebra@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server",
+    "dev": "concurrently \"yarn start\" \"cd client && yarn start\""
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0"
+  }
+}
