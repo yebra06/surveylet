@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
 
+import Nav from './components/Nav';
+
 export default class App extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			test: null
-		};
-	}
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
 
-	componentDidMount() {
-		fetch('/api/test')
-		    .then(res => res.json())
-		    .then(data => this.setState({ data: data.data }));
-	}
-
-	render() {
-		return (
-			<div className="App">
-				{ this.state.data ? <h1>hi {this.state.data}</h1> : <h1>Nothing here</h1> }
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div>
+                <Nav/>
+            </div>
+        );
+    }
 };
