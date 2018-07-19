@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import Nav from './components/Nav';
-
-class App extends Component {
+class Home extends Component {
 
     constructor(props) {
         super(props);
@@ -11,11 +9,9 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <Nav />
-            </div>
+            <div>Home</div>
         );
     }
 }
 
-export default App;
+export default Home;
