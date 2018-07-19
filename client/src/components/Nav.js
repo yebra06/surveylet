@@ -1,15 +1,13 @@
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
     return (
         <nav>
             <div>
                 <Link to='/'>Home</Link>
+                <Link to='/create'>Create</Link>
             </div>
-            <Switch>
-                <Route exact path="/" component={() => <h1>home</h1>}/>
-            </Switch>
         </nav>
     );
 };
