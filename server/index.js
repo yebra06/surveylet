@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // Connect db.
@@ -13,6 +14,8 @@ const app = express();
 // Import api routes.
 const survey = require('./routes/survey');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 app.use('/api/survey', survey);
 app.get('*', (req, res) => {
