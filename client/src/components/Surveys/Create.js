@@ -2,13 +2,41 @@ import React, { Component } from 'react';
 
 class Create extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {}
+    constructor() {
+        super();
+        this.state = {
+            title: ''
+        };
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
+
+    handleInputChange(e) {
+        const nextState = this.state;
+        nextState[e.target.name] = e.target.value;
+        this.setState(nextState);
+    }
+
+    handleFormSubmit(e) {
+        e.preventDefault();
+        const { title } = this.state;
     }
 
     render() {
-        return (<div>Create Survey</div>);
+        return (
+            <form onSubmit={this.handleFormSubmit}>
+                <label>
+                    title
+                    <input
+                        name='title'
+                        type='string'
+                        value={this.state.title}
+                        onChange={this.handleInputChange}
+                    />
+                </label>
+                <input type="submit" value="Submit"/>
+            </form>
+        );
     }
 }
 
