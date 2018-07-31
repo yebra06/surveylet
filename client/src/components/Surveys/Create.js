@@ -19,7 +19,15 @@ class Create extends Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
-        const { title } = this.state;
+        fetch('http://localhost:3000/api/survey/create', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: this.state.title
+            })
+        });
     }
 
     render() {

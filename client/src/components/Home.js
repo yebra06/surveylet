@@ -1,33 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Home extends Component {
+import Surveys from './Surveys/Surveys';
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            surveys: []
-        }
-    }
-
-    componentDidMount() {
-        fetch('/api/survey')
-            .then(res => {
-                this.setState({
-                    surveys: res.data
-                });
-                console.log(this.state.surveys);
-            });
-    }
-
-    render() {
-        const { surveys } = this.state;
-
-        return (
-            <div className='ListSurvey'>
-                {surveys ? surveys.map(survey => <h1>survey {survey.title}</h1>) : <h1>No surveys found</h1>}
-            </div>
-        );
-    }
-}
+const Home = () => {
+    return (
+        <div className="Home">
+            <Surveys />
+        </div>
+    );
+};
 
 export default Home;
