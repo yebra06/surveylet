@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-// Create survey.
+// SurveyCreate survey.
 router.post('/create', (req, res, next) => {
     Survey.create(req.body, (err, survey) => {
         res.json(survey);

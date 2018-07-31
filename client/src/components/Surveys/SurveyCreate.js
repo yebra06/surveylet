@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Create extends Component {
+class SurveyCreate extends Component {
 
     constructor() {
         super();
@@ -48,4 +48,4 @@ class Create extends Component {
     }
 }
 
-export default Create;
+export default SurveyCreate;

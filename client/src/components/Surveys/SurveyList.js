@@ -1,18 +1,38 @@
 import React from 'react';
 
-const SurveyList = ({surveys}) => {
+class SurveyList extends React.Component {
 
-    const surveyList = surveys.map((survey, i) =>
-        <div key={i} className="Survey">
-            <h1>{survey.title}</h1>
-        </div>
-    );
+    constructor(props) {
+        super(props);
+        this.state = {
+            surveys: []
+        }
+    }
 
-    return (
-        <div className="SurveyList">
-            {surveyList}
-        </div>
-    );
-};
+    componentDidMount() {
+        fetch('http://localhost:3000/api/survey')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({
+                    surveys: data
+                })
+            })
+    }
+
+    render() {
+        const surveyList = this.state.surveys.map((survey, i) =>
+            <div key={i} className="Survey">
+                <h1>{survey.title}</h1>
+            </div>
+        );
+
+        return (
+            <div className="Surveys">
+                {surveyList}
+            </div>
+        );
+    }
+}
+
 
 export default SurveyList;
