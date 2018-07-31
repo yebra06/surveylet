@@ -19,7 +19,7 @@ class SurveyCreate extends Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
-        fetch('http://localhost:3000/api/survey/create', {
+        fetch('api/survey/create', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

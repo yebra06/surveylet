@@ -10,7 +10,7 @@ class SurveyList extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/api/survey')
+        fetch('/api/survey')
             .then(res => res.json())
             .then(data => {
                 this.setState({
