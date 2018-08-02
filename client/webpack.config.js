@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
 	module: {
@@ -21,12 +22,14 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: './public/index.html',
-		})
+		}),
+		new webpack.HotModuleReplacementPlugin()
 	],
 	devServer: {
 		port: 3000,
 		proxy: {
 		  "/api": "http://localhost:8080"
-		}
-	}
+		},
+        hot: true,
+    }
 };

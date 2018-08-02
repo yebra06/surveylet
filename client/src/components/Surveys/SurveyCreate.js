@@ -5,7 +5,8 @@ class SurveyCreate extends Component {
     constructor() {
         super();
         this.state = {
-            title: ''
+            title: '',
+            questions: []
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -32,18 +33,21 @@ class SurveyCreate extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
-                <label>
-                    title
-                    <input
-                        name='title'
-                        type='string'
-                        value={this.state.title}
-                        onChange={this.handleInputChange}
-                    />
-                </label>
-                <input type="submit" value="Submit"/>
-            </form>
+            <div className="survey-form-container">
+                <form onSubmit={this.handleFormSubmit}>
+                    <h1>Survey Form:</h1>
+                    <label>
+                        Title
+                        <input
+                            name='title'
+                            type='string'
+                            value={this.state.title}
+                            onChange={this.handleInputChange}
+                        />
+                    </label>
+                    <input type="submit" value="Submit"/>
+                </form>
+            </div>
         );
     }
 }
