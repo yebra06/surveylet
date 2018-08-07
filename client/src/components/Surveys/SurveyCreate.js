@@ -1,51 +1,62 @@
 import React, { Component } from 'react';
 
 class SurveyCreate extends Component {
+    state = {
+        title: '',
+        questions: [{question: ''}]
+    };
 
-    constructor() {
-        super();
-        this.state = {
-            title: '',
-            questions: []
-        };
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    }
-
-    handleInputChange(e) {
-        const nextState = this.state;
-        nextState[e.target.name] = e.target.value;
-        this.setState(nextState);
-    }
-
-    handleFormSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault();
-        fetch('api/survey/create', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                title: this.state.title
-            })
+        console.log(this.state);
+    };
+
+    handleTitleChange = (e) => {
+        this.setState({
+            title: e.target.value
         });
+    };
+
+    handleQuestionsQuestionChange = (id) => (e) => {
+        const newQuestions = this.state.questions.map((question, questionId) =>
+            id !== questionId ? question : {...question, question: e.target.value});
+        this.setState({questions: newQuestions});
+    };
+
+    handleAddQuestion = () => {
+        this.setState({
+            questions: this.state.questions.concat([{question: ''}])
+        });
+    };
+
+    renderQuestions() {
+        return (
+            this.state.questions.map((question, questionId) => (
+                <div key={questionId} className="question">
+                    <label>Question #{`${questionId+1}`}</label>
+                    <input
+                        type="text"
+                        value={question.question}
+                        onChange={this.handleQuestionsQuestionChange(questionId)}
+                    />
+                </div>
+            ))
+        );
     }
 
     render() {
         return (
             <div className="survey-form-container">
-                <form onSubmit={this.handleFormSubmit}>
-                    <h1>Survey Form:</h1>
-                    <label>
-                        Title
-                        <input
-                            name='title'
-                            type='string'
-                            value={this.state.title}
-                            onChange={this.handleInputChange}
-                        />
-                    </label>
-                    <input type="submit" value="Submit"/>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Survey Title</label>
+                    <input
+                        type="text"
+                        value={this.state.title}
+                        onChange={this.handleTitleChange}
+                    />
+                    {this.renderQuestions()}
+                    <button type="button" onClick={this.handleAddQuestion}>Add Question</button>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         );

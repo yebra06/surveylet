@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const surveySchema = new mongoose.Schema({
-    title: String
+const questionSchema = new Schema({
+    question: String
 });
 
+const surveySchema = new Schema({
+    title: String,
+    questions: [{ type: Schema.ObjectId, ref: 'Question' }]
+});
+
+module.exports = mongoose.model('Question', questionSchema);
 module.exports = mongoose.model('Survey', surveySchema);
