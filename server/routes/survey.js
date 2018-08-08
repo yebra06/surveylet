@@ -9,6 +9,15 @@ router.get('/', (req, res) => {
     });
 });
 
+// Get individual survey by id.
+router.get('/:id', (req, res) => {
+    Survey.findById(req.params.id, (err, survey) => {
+        if (err)
+            return next(err);
+        res.json(survey);
+    });
+});
+
 // SurveyCreate survey.
 router.post('/create', (req, res) => {
     Survey.create(req.body, err => {

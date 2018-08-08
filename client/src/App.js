@@ -1,27 +1,42 @@
 import React from 'react';
 
-import { BrowserRouter, Link, Route } from 'react-router-dom';
-
-import SurveyList from './components/Surveys/SurveyList';
-import SurveyCreate from "./components/Surveys/SurveyCreate";
-import Home from "./components/Home";
+import { Link } from 'react-router-dom';
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            surveys: []
+        }
+    }
+
+    componentDidMount() {
+        fetch('/api/survey')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({
+                    surveys: data
+                })
+            })
+    }
+
+    renderSurveys() {
+        return (
+            this.state.surveys.map((survey, i) =>
+                <div key={i} className="survey">
+                    <Link to={`/survey/${survey._id}`}>
+                        <h1>{survey.title}</h1>
+                    </Link>
+                    <small>Questions: {survey.questions.length}</small>
+                </div>
+            )
+        );
+    }
+
     render() {
         return (
-            <div className="App">
-                <BrowserRouter>
-                    <div>
-                        <nav>
-                            <Link to='/'>Home</Link>
-                            <Link to='/create'>Create Survey</Link>
-                            <Link to='/list'>Take Survey</Link>
-                        </nav>
-                        <Route exact path='/' component={Home} />
-                        <Route path='/create' component={SurveyCreate} />
-                        <Route path='/list' component={SurveyList} />
-                    </div>
-                </BrowserRouter>
+            <div className="app">
+                {this.renderSurveys()}
             </div>
         );
     }
