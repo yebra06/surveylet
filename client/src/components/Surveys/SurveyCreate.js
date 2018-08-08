@@ -8,10 +8,17 @@ class SurveyCreate extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        fetch('/api/survey/create', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
     };
 
     handleTitleChange = (e) => {
+        e.preventDefault();
         this.setState({
             title: e.target.value
         });

@@ -1,19 +1,20 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const router = express.Router();
 const Survey = require('../models/Survey.js');
 
 // Get all surveys.
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     Survey.find((err, surveys) => {
         res.json(surveys);
     });
 });
 
 // SurveyCreate survey.
-router.post('/create', (req, res, next) => {
-    Survey.create(req.body, (err, survey) => {
-        res.json(survey);
+router.post('/create', (req, res) => {
+    Survey.create(req.body, err => {
+        if (err)
+            console.log(err);
+        res.end();
     });
 });
 

@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost:27017/surveylet', {useNewUrlParser: true})
     .then(() => console.log('connection to db successful'))
     .catch((err) => console.log(err));
 
-// SurveyCreate app instance.
+// Create app instance.
 const app = express();
 
 // Import api routes.
