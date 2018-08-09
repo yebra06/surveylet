@@ -24,10 +24,13 @@ class App extends React.Component {
         return (
             this.state.surveys.map((survey, i) =>
                 <div key={i} className="survey">
-                    <Link to={`/survey/${survey._id}`}>
+                    <div>
                         <h1>{survey.title}</h1>
+                        <h4>Questions: {survey.questions.length}</h4>
+                    </div>
+                    <Link className="take-survey-btn" to={`/survey/${survey._id}`}>
+                        Take Survey
                     </Link>
-                    <small>Questions: {survey.questions.length}</small>
                 </div>
             )
         );
@@ -36,7 +39,9 @@ class App extends React.Component {
     render() {
         return (
             <div className="app">
-                {this.renderSurveys()}
+                <div className="app-section">
+                    {this.renderSurveys()}
+                </div>
             </div>
         );
     }

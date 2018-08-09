@@ -1,12 +1,36 @@
 @import 'normalize.css';
 @import 'surveys.scss';
 
+body {
+  background-color: lavender;
+}
+
 a {
-	text-decoration: none;
+  text-decoration: none;
+
+  &:visited {
+    color: initial;
+  }
 }
 
 nav {
-	display: flex;
-	justify-content: space-around;
-	font-size: 26px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 26px;
+  padding: 20px;
+  border-bottom: 2px solid white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+
+  .app-section {
+    flex: 1 100%;
+  }
 }
