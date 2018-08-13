@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class Survey extends Component {
     state = {
-        survey: {}
+        title: '',
+        questions: []
     };
 
     componentDidMount() {
@@ -10,16 +11,25 @@ class Survey extends Component {
             .then(res => res.json())
             .then(data => {
                 this.setState({
-                    survey: data
+                    title: data.title,
+                    questions: data.questions
                 });
-                console.log(this.state);
             })
     }
 
     render() {
+        const qs = this.state.questions.map((q, i) =>
+            <div className= "question" key={i}>
+                <h2>{q.question}</h2>
+            </div>
+        );
+
         return (
             <div className="survey">
-                <h1>{this.state.survey.title}</h1>
+                <h1>{this.state.title}</h1>
+                <div className="questions">
+                    {qs}
+                </div>
             </div>
         );
     }

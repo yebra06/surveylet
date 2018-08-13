@@ -14,7 +14,10 @@ router.get('/:id', (req, res) => {
     Survey.findById(req.params.id, (err, survey) => {
         if (err)
             return next(err);
-        res.json(survey);
+        res.json({
+            title: survey.title,
+            questions: survey.questions
+        });
     });
 });
 
