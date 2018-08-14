@@ -28,7 +28,7 @@ class App extends React.Component {
                         <h1>{survey.title}</h1>
                         <h4>Questions: {survey.questions.length}</h4>
                     </div>
-                    <Link className="take-survey-btn" to={`/survey/${survey._id}`}>
+                    <Link className="btn-main take-survey-btn" to={`/survey/${survey._id}`}>
                         Take Survey
                     </Link>
                 </div>

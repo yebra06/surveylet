@@ -39,7 +39,7 @@ class SurveyCreate extends Component {
     renderQuestions() {
         return (
             this.state.questions.map((question, questionId) => (
-                <div key={questionId} className="question">
+                <div key={questionId} className="form-question">
                     <label>Question #{`${questionId+1}`}</label>
                     <input
                         type="text"
@@ -54,16 +54,20 @@ class SurveyCreate extends Component {
     render() {
         return (
             <div className="survey-form-container">
-                <form onSubmit={this.handleSubmit}>
-                    <label>Survey Title</label>
-                    <input
-                        type="text"
-                        value={this.state.title}
-                        onChange={this.handleTitleChange}
-                    />
-                    {this.renderQuestions()}
-                    <button type="button" onClick={this.handleAddQuestion}>Add Question</button>
-                    <button type="submit">Submit</button>
+                <form className="survey-form" onSubmit={this.handleSubmit}>
+                    <div className="survey-form-section">
+                        <label>Survey Title</label>
+                        <input
+                            type="text"
+                            value={this.state.title}
+                            onChange={this.handleTitleChange}
+                        />
+                    </div>
+                    <div className="survey-form-section questions">
+                        {this.renderQuestions()}
+                        <button className="add-question-btn" type="button" onClick={this.handleAddQuestion}>&#43;</button>
+                    </div>
+                    <button className="btn-main submit-form-btn" type="submit">Submit</button>
                 </form>
             </div>
         );
