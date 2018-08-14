@@ -17,19 +17,22 @@ class Survey extends Component {
             })
     }
 
-    render() {
-        const qs = this.state.questions.map((q, i) =>
-            <div className= "question" key={i}>
-                <h2>{q.question}</h2>
+    renderQuestions() {
+        return this.state.questions.map((q, i) =>
+            <div className="question" key={i}>
+                <h3>{q.question}</h3>
             </div>
         );
+    }
 
+    render() {
         return (
-            <div className="survey">
-                <h1>{this.state.title}</h1>
-                <div className="questions">
-                    {qs}
+            <div className="survey take-survey">
+                <div>
+                    <h1>{this.state.title}</h1>
+                    <h4>Questions: {this.state.questions.length}</h4>
                 </div>
+                {this.renderQuestions()}
             </div>
         );
     }

@@ -12,10 +12,19 @@
   margin: 20px;
   padding: 20px 40px;
 
+  &.take-survey {
+    flex-direction: column;
+  }
+
   .take-survey-btn {
     align-self: center;
     font-size: 20px;
     padding: 10px;
     border: 1px solid lavender;
+  }
+
+  .question {
+    padding: 20px 0;
+    margin: 20px 0;
   }
 }
